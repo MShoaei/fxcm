@@ -1,7 +1,6 @@
 package fxdl
 
 import (
-	"compress/gzip"
 	"crypto/tls"
 	"encoding/json"
 	"fmt"
@@ -48,19 +47,17 @@ type data struct {
 }
 
 func (c *Client) Do(symbol string) ([]*Candle, error) {
-	u := fmt.Sprintf("https://data.forexsb.com/data/%s%s.gz", symbol, c.p)
+	u := fmt.Sprintf("https://data.forexsb.com/data/%s%.0f.gz", symbol, c.p.Minutes())
 	resp, err := c.hc.Get(u)
 	if err != nil {
 		return nil, err
 	}
 
-	r, err := gzip.NewReader(resp.Body)
-	defer resp.Body.Close()
-
-	b, err := ioutil.ReadAll(r)
+	b, err := ioutil.ReadAll(resp.Body)
 	if err != nil {
 		return nil, err
 	}
+	defer resp.Body.Close()
 	d := &data{}
 
 	if err = json.Unmarshal(b, d); err != nil {

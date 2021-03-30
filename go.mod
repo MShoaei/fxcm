@@ -1,3 +1,3 @@
-module github.com/MShoaei/fxcm
+module github.com/MShoaei/fxdl
 
 go 1.16

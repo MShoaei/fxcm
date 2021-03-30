@@ -1,4 +1,4 @@
-package fxcm
+package fxdl
 
 import (
 	"net/http"

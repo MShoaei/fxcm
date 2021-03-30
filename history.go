@@ -1,4 +1,4 @@
-package fxcm
+package fxdl
 
 import (
 	"compress/gzip"
@@ -11,7 +11,7 @@ import (
 	"time"
 )
 
-var millenium = time.Date(2000, 1, 1, 0, 0, 0, 0, time.UTC)
+var millennium = time.Date(2000, 1, 1, 0, 0, 0, 0, time.UTC)
 
 type period time.Duration
 
@@ -71,8 +71,8 @@ func (c *Client) Do(symbol string) ([]*Candle, error) {
 
 	for i := 0; i < len(d.Time); i++ {
 		c := Candle{
-			Start:      millenium.Add(time.Duration(d.Time[i]) * 60 * time.Second),
-			End:        millenium.Add(time.Duration(d.Time[i])*60*time.Second + c.p - 1),
+			Start:      millennium.Add(time.Duration(d.Time[i]) * 60 * time.Second),
+			End:        millennium.Add(time.Duration(d.Time[i])*60*time.Second + c.p - 1),
 			OpenPrice:  d.Open[i],
 			ClosePrice: d.Close[i],
 			MaxPrice:   d.High[i],

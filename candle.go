@@ -1,4 +1,4 @@
-package fxcm
+package fxdl
 
 import "time"
 

@@ -1,12 +1,11 @@
 package fxcm
 
 import (
-	gosocketio "github.com/graarh/golang-socketio"
 	"net/http"
+	"time"
 )
 
 type Client struct {
-	httpClient *http.Client
-	socketio   *gosocketio.Client
-	APIToken   string
+	p  time.Duration
+	hc *http.Client
 }

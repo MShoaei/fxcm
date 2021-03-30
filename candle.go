@@ -1,11 +1,13 @@
 package fxcm
 
+import "time"
+
 type Candle struct {
-	Start      int64
-	End        int64
-	OpenPrice  string
-	ClosePrice string
-	MaxPrice   string
-	MinPrice   string
-	Volume     string
+	Start      time.Time
+	End        time.Time
+	OpenPrice  float64
+	ClosePrice float64
+	MaxPrice   float64
+	MinPrice   float64
+	Volume     int
 }
